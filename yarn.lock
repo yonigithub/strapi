@@ -135,16 +135,15 @@
     levenary "^1.1.1"
     semver "^5.5.0"
 
-"@babel/helper-create-class-features-plugin@^7.10.4":
-  version "7.10.5"
-  resolved "https://registry.yarnpkg.com/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.10.5.tgz#9f61446ba80e8240b0a5c85c6fdac8459d6f259d"
-  integrity sha512-0nkdeijB7VlZoLT3r/mY3bUkw3T8WG/hNw+FATs/6+pG2039IJWjTYL0VTISqsNHMUTEnwbVnc89WIJX9Qed0A==
+"@babel/helper-create-class-features-plugin@^7.10.4", "@babel/helper-create-class-features-plugin@^7.12.1":
+  version "7.12.1"
+  resolved "https://registry.yarnpkg.com/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.12.1.tgz#3c45998f431edd4a9214c5f1d3ad1448a6137f6e"
+  integrity sha512-hkL++rWeta/OVOBTRJc9a5Azh5mt5WgZUGAKMD8JM141YsE08K//bp1unBBieO6rUKkIPyUE0USQ30jAy3Sk1w==
   dependencies:
     "@babel/helper-function-name" "^7.10.4"
-    "@babel/helper-member-expression-to-functions" "^7.10.5"
+    "@babel/helper-member-expression-to-functions" "^7.12.1"
     "@babel/helper-optimise-call-expression" "^7.10.4"
-    "@babel/helper-plugin-utils" "^7.10.4"
-    "@babel/helper-replace-supers" "^7.10.4"
+    "@babel/helper-replace-supers" "^7.12.1"
     "@babel/helper-split-export-declaration" "^7.10.4"
 
 "@babel/helper-create-regexp-features-plugin@^7.10.4":
@@ -195,7 +194,7 @@
   dependencies:
     "@babel/types" "^7.10.4"
 
-"@babel/helper-member-expression-to-functions@^7.10.4", "@babel/helper-member-expression-to-functions@^7.10.5":
+"@babel/helper-member-expression-to-functions@^7.10.4":
   version "7.11.0"
   resolved "https://registry.yarnpkg.com/@babel/helper-member-expression-to-functions/-/helper-member-expression-to-functions-7.11.0.tgz#ae69c83d84ee82f4b42f96e2a09410935a8f26df"
   integrity sha512-JbFlKHFntRV5qKw3YC0CvQnDZ4XMwgzzBbld7Ly4Mj4cbFy3KywcR8NtNctRToMWJOVvLINJv525Gd6wwVEx/Q==
@@ -363,12 +362,12 @@
     "@babel/helper-remap-async-to-generator" "^7.10.4"
     "@babel/plugin-syntax-async-generators" "^7.8.0"
 
-"@babel/plugin-proposal-class-properties@^7.10.4", "@babel/plugin-proposal-class-properties@^7.4.0":
-  version "7.10.4"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-class-properties/-/plugin-proposal-class-properties-7.10.4.tgz#a33bf632da390a59c7a8c570045d1115cd778807"
-  integrity sha512-vhwkEROxzcHGNu2mzUC0OFFNXdZ4M23ib8aRRcJSsW8BZK9pQMD7QB7csl97NBbgGZO7ZyHUyKDnxzOaP4IrCg==
+"@babel/plugin-proposal-class-properties@^7.10.4", "@babel/plugin-proposal-class-properties@^7.12.1":
+  version "7.12.1"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-class-properties/-/plugin-proposal-class-properties-7.12.1.tgz#a082ff541f2a29a4821065b8add9346c0c16e5de"
+  integrity sha512-cKp3dlQsFsEs5CWKnN7BnSHOd0EOW8EKpEjkoz1pO2E5KzIDNV9Ros1b0CnmbVgAGXJubOYVBOGCT1OmJwOI7w==
   dependencies:
-    "@babel/helper-create-class-features-plugin" "^7.10.4"
+    "@babel/helper-create-class-features-plugin" "^7.12.1"
     "@babel/helper-plugin-utils" "^7.10.4"
 
 "@babel/plugin-proposal-dynamic-import@^7.10.4":
@@ -1043,15 +1042,15 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@buffetjs/core@3.3.2-next.2":
-  version "3.3.2-next.2"
-  resolved "https://registry.yarnpkg.com/@buffetjs/core/-/core-3.3.2-next.2.tgz#440494812416e459abe07074fceb9207f4da9223"
-  integrity sha512-JyUBypuy4i6+sb2qki/bija2m3xEaucHdSEFFvDVtAKKicDZ70wrEbN09eGDGms27GKBJhdMSXLzs5ywGaFmgw==
+"@buffetjs/core@3.3.3":
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/@buffetjs/core/-/core-3.3.3.tgz#d312b917a3ada0c34c791bc963a80aced5ac6b2f"
+  integrity sha512-2kczHnWmgwC+VjoG5HWrKo9FCzcbTBDd+HvKaCBbv8RTI6PsGgUBV7J/KEN/bl+9arefMPBjpVwry4IdQFZiwQ==
   dependencies:
-    "@buffetjs/hooks" "3.3.2-next.2"
-    "@buffetjs/icons" "3.3.2-next.2"
-    "@buffetjs/styles" "3.3.2-next.2"
-    "@buffetjs/utils" "3.3.2-next.2"
+    "@buffetjs/hooks" "3.3.3"
+    "@buffetjs/icons" "3.3.3"
+    "@buffetjs/styles" "3.3.3"
+    "@buffetjs/utils" "3.3.3"
     "@fortawesome/fontawesome-svg-core" "^1.2.25"
     "@fortawesome/free-regular-svg-icons" "^5.11.2"
     "@fortawesome/free-solid-svg-icons" "^5.11.2"
@@ -1067,35 +1066,35 @@
     react-with-direction "^1.3.1"
     reactstrap "^8.5.1"
 
-"@buffetjs/custom@3.3.2-next.2":
-  version "3.3.2-next.2"
-  resolved "https://registry.yarnpkg.com/@buffetjs/custom/-/custom-3.3.2-next.2.tgz#9a1db1ad2875c40ed338f529760989fb6b20f121"
-  integrity sha512-cFxuThd7cKwBXC7Xy0GPZlrCCCML4I7ElhJ0aM8gFQ5NsJM+LSwsV4R8mzEH7frKRloxasF26FELsTFDfJg+0A==
+"@buffetjs/custom@3.3.3":
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/@buffetjs/custom/-/custom-3.3.3.tgz#8bc088de176366b1d0620764d45d9f52edca697a"
+  integrity sha512-9kLD6hKQEsXoQK4Lr9OlVY37ZNByecHpGUeh4PxcJfKYqLRtU3xbKTaUJbexCrdx+2XddlyrRgNTNcrl59S8uA==
   dependencies:
-    "@buffetjs/core" "3.3.2-next.2"
-    "@buffetjs/styles" "3.3.2-next.2"
-    "@buffetjs/utils" "3.3.2-next.2"
+    "@buffetjs/core" "3.3.3"
+    "@buffetjs/styles" "3.3.3"
+    "@buffetjs/utils" "3.3.3"
     lodash "4.17.19"
     moment "^2.24.0"
     prop-types "^15.5.10"
     react-moment-proptypes "^1.7.0"
 
-"@buffetjs/hooks@3.3.2-next.2":
-  version "3.3.2-next.2"
-  resolved "https://registry.yarnpkg.com/@buffetjs/hooks/-/hooks-3.3.2-next.2.tgz#a1b630338f394fd2585fee04575c0f355e787cca"
-  integrity sha512-h9wbjriwcF16qgro4VBYYvompOiVsn9gOStAoZomfexGlJEfaqp3fzTFs3g0Mpx4bjgZVLrD5Lu2tZVFD6MNYQ==
+"@buffetjs/hooks@3.3.3":
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/@buffetjs/hooks/-/hooks-3.3.3.tgz#7a78d10ad354fe1e23d17e853509c71dc150e82e"
+  integrity sha512-84rIOVarxg1HRJNYbPEFnbFHHbBTpIzxfbbYZ43rVZW0Qe5VcRLaZ6j+jmaNeeTyv0SxgMgH7ZgwZYlEMlBfEA==
 
-"@buffetjs/icons@3.3.2-next.2":
-  version "3.3.2-next.2"
-  resolved "https://registry.yarnpkg.com/@buffetjs/icons/-/icons-3.3.2-next.2.tgz#ad52c58a42a2dd354014e57fe33f889809118392"
-  integrity sha512-agWYLovmWgl61tU+zpTqJGU5hNGmeYkeeKA9j9ZeSgGcjPHTQKRGZdQ2WPXvabiuDvoJqLM1NmklYcGdKbIUHA==
+"@buffetjs/icons@3.3.3":
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/@buffetjs/icons/-/icons-3.3.3.tgz#6cfa34ef8919f969a8cbf0c5852e0c645da37d88"
+  integrity sha512-xp/DT6mmOHG6ezYoI4AoP0YzHKX4ZBIcfkNbE5JFF5CFh+9lkypRdoZQ1Y/LAshDx0u/GP6hmshm7L8B2lDnRQ==
   dependencies:
     prop-types "^15.5.10"
 
-"@buffetjs/styles@3.3.2-next.2":
-  version "3.3.2-next.2"
-  resolved "https://registry.yarnpkg.com/@buffetjs/styles/-/styles-3.3.2-next.2.tgz#033d6d0c639eb71bd382e1a02e3812bfabdbd9a1"
-  integrity sha512-kY16rtx4OkvO0meigMC602cByodMVSKAIpZTWjvZdNqvEDAASap2nGEbTJXNayskrkPrBEED4tiAaEU3VtQgIg==
+"@buffetjs/styles@3.3.3":
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/@buffetjs/styles/-/styles-3.3.3.tgz#9abfd3a73e068bb23c6040ab4f6b5e372d5f6c13"
+  integrity sha512-LohTzWpcFsreW+9+FfqYyXSFkqFF/g3tDtpGsCia9TSiQLsipuVMG2++JqaNUmorBOLNUKsfnPSDczSd5XRFFA==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.12.0"
     "@fortawesome/fontawesome-svg-core" "^1.2.22"
@@ -1105,10 +1104,10 @@
     prop-types "^15.7.2"
     react-dates "^21.1.0"
 
-"@buffetjs/utils@3.3.2-next.2":
-  version "3.3.2-next.2"
-  resolved "https://registry.yarnpkg.com/@buffetjs/utils/-/utils-3.3.2-next.2.tgz#0417432c444029a9a49f8ea8e72daaa89a68ab9c"
-  integrity sha512-eppigKnXLnKdiIN5fqyP3tsvvM+UilbbGPY2K919qfXUwOd8HjNsggkBr5CJ8JQE7WIDjDEBWi0PHFECKFvdsw==
+"@buffetjs/utils@3.3.3":
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/@buffetjs/utils/-/utils-3.3.3.tgz#14cc3f541741e7da57e212c0f8632a34ad16c3fd"
+  integrity sha512-LiinNk1ocs/5IG2qgo+dBbGjNOEp85cosbWmZ/YuHnTnYXt2GVAUQh//M0he179iAlHNN9hH6hlK7KW85MaKbw==
   dependencies:
     lodash "4.17.19"
     yup "^0.27.0"
@@ -5562,10 +5561,10 @@ code-point-at@^1.0.0:
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
-codemirror@^5.46.0:
-  version "5.58.1"
-  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.58.1.tgz#ec6bf38ad2a17f74c61bd00cc6dc5a69bd167854"
-  integrity sha512-UGb/ueu20U4xqWk8hZB3xIfV2/SFqnSLYONiM3wTMDqko0bsYrsAkGGhqUzbRkYm89aBKPyHtuNEbVWF9FTFzw==
+codemirror@^5.59.0:
+  version "5.59.0"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.59.0.tgz#6d8132055459aabf21d04cae5cf5c430e5c57bb9"
+  integrity sha512-UGzSkCacY9z0rSpQ3wnTWRN2nvRE6foDXnJltWW8pazInR/R+3gXHrao4IFQMv/bSBvFBxt8/HPpkpKAS54x5Q==
 
 collapse-white-space@^1.0.2:
   version "1.0.6"
