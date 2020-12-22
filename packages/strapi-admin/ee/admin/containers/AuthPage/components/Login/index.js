@@ -38,7 +38,7 @@ const Login = loginProps => {
         ) : (
           <Flex justifyContent="center">
             {providers.slice(0, 2).map((provider, index) => (
-              <Padded key={provider.id} left={index !== 0} right size="xs">
+              <Padded key={provider.uid} left={index !== 0} right size="xs">
                 <ProviderButton provider={provider} />
               </Padded>
             ))}

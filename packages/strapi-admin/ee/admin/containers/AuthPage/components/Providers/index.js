@@ -43,8 +43,8 @@ const Providers = () => {
             ) : (
               <Flex flexWrap="wrap">
                 {providers.map(provider => (
-                  <ProviderWrapper key={provider.id}>
-                    <ProviderButton key={provider.id} provider={provider} />
+                  <ProviderWrapper key={provider.uid}>
+                    <ProviderButton provider={provider} />
                   </ProviderWrapper>
                 ))}
               </Flex>
