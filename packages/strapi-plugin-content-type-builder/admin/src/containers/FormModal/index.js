@@ -39,7 +39,7 @@ import {
   forms,
   getNextSearch,
 } from './utils';
-import { createComponentUid, createUid } from './utils/createUid';
+import { createComponentUid, createUid, nameToSlug } from './utils/createUid';
 import { NAVLINKS, INITIAL_STATE_DATA } from './utils/staticData';
 import init from './init';
 import reducer, { initialState } from './reducer';
@@ -1271,7 +1271,7 @@ const FormModal = () => {
                             } else if (input.name === 'enum' && Array.isArray(retrievedValue)) {
                               value = retrievedValue.join('\n');
                             } else if (input.name === 'uid') {
-                              value = input.value;
+                              value = nameToSlug(modifiedData.name || '');
                             } else if (input.name === 'allowedTypes' && retrievedValue === '') {
                               value = null;
                             } else {

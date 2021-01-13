@@ -1,6 +1,4 @@
 import { get, toLower } from 'lodash';
-import { nameToSlug } from '../createUid';
-
 import { attributesForm, attributeTypes, commonBaseForm } from '../attributes';
 import { categoryForm, createCategorySchema } from '../category';
 import { contentTypeForm, createContentTypeSchema } from '../contentType';
@@ -59,17 +57,15 @@ const forms = {
       return createContentTypeSchema(takenNames, reservedNames.models);
     },
     form: {
-      base(data = {}, type, step, actionType) {
+      base(data, type, step, actionType) {
         if (actionType === 'create') {
-          const value = data.name ? nameToSlug(data.name) : '';
-
-          return contentTypeForm.base.create(value);
+          return contentTypeForm.base.create;
         }
 
-        return contentTypeForm.base.edit();
+        return contentTypeForm.base.edit;
       },
       advanced() {
-        return contentTypeForm.advanced.default();
+        return contentTypeForm.advanced.default;
       },
     },
   },
