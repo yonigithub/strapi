@@ -10,6 +10,7 @@ import {
   useUser,
   useUserPermissions,
   useGlobalContext,
+  useStrapi,
 } from 'strapi-helper-plugin';
 import { Padded } from '@buffetjs/core';
 import pluginId from '../../pluginId';
@@ -21,9 +22,7 @@ import FieldComponent from '../../components/FieldComponent';
 import Inputs from '../../components/Inputs';
 import SelectWrapper from '../../components/SelectWrapper';
 import { generatePermissionsObject, getInjectedComponents } from '../../utils';
-import CollectionTypeFormWrapper from '../CollectionTypeFormWrapper';
 import EditViewDataManagerProvider from '../EditViewDataManagerProvider';
-import SingleTypeFormWrapper from '../SingleTypeFormWrapper';
 import Header from './Header';
 import { createAttributesLayout, getFieldsActionMatchingPermissions } from './utils';
 import { LinkWrapper, SubWrapper } from './components';
@@ -33,6 +32,17 @@ import InformationCard from './InformationCard';
 /* eslint-disable  react/no-array-index-key */
 const EditView = ({ isSingleType, goBack, layout, slug, state, id, origin }) => {
   const { currentEnvironment, plugins } = useGlobalContext();
+  const {
+    strapi: { getPlugin },
+  } = useStrapi();
+  const cmPlugin = useMemo(() => getPlugin(pluginId), [getPlugin]);
+  const CollectionTypeFormDecorator = useMemo(
+    () => cmPlugin.getDecorator('CollectionTypeFormWrapper'),
+    [cmPlugin]
+  );
+  const SingleTypeFormDecorator = useMemo(() => cmPlugin.getDecorator('SingleTypeFormWrapper'), [
+    cmPlugin,
+  ]);
   // Permissions
   const viewPermissions = useMemo(() => generatePermissionsObject(slug), [slug]);
   const { allowedActions, isLoading: isLoadingForPermissions } = useUserPermissions(
@@ -62,10 +72,9 @@ const EditView = ({ isSingleType, goBack, layout, slug, state, id, origin }) => 
   }/${slug}/configurations/edit`;
   const currentContentTypeLayoutData = useMemo(() => get(layout, ['contentType'], {}), [layout]);
 
-  const DataManagementWrapper = useMemo(
-    () => (isSingleType ? SingleTypeFormWrapper : CollectionTypeFormWrapper),
-    [isSingleType]
-  );
+  const DataManagementWrapper = useMemo(() => {
+    return isSingleType ? SingleTypeFormDecorator : CollectionTypeFormDecorator;
+  }, [CollectionTypeFormDecorator, SingleTypeFormDecorator, isSingleType]);
 
   // Check if a block is a dynamic zone
   const isDynamicZone = useCallback(block => {

@@ -9,7 +9,8 @@ import pluginPkg from '../../package.json';
 import pluginId from './pluginId';
 import pluginLogo from './assets/images/logo.svg';
 import App from './containers/Main';
-
+import CollectionTypeFormWrapper from './containers/CollectionTypeFormWrapper';
+import SingleTypeFormWrapper from './containers/SingleTypeFormWrapper';
 import ConfigureViewButton from './InjectedComponents/ContentTypeBuilder/ConfigureViewButton';
 import lifecycles from './lifecycles';
 import reducers from './reducers';
@@ -24,6 +25,11 @@ export default strapi => {
     icon: pluginPkg.strapi.icon,
     id: pluginId,
     initializer: null,
+    decorators: {
+      // Default wrappers for the EditView
+      CollectionTypeFormWrapper,
+      SingleTypeFormWrapper,
+    },
     injectedComponents: [
       {
         plugin: 'content-type-builder.listView',
