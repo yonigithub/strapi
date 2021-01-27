@@ -19,8 +19,10 @@
  */
 module.exports = (on, config) => {
   on('task', {
-    reset(args) {
-      console.log(args);
-    }
-  })
-}
+    reset() {
+      console.log('Hello world');
+
+      return '';
+    },
+  });
+};

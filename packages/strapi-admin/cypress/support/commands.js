@@ -30,7 +30,5 @@ import '@testing-library/cypress/add-commands';
 // });
 // Cypress.Commands.add('reset', (email, password) => {
 //   cy.log('reset...');
-  
-// });
 
-// Cypress.Commands.add('login', (email, password) => {});
+// });

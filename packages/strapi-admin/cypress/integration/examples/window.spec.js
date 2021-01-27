@@ -11,7 +11,8 @@ context('Strapi auth', () => {
   });
 
   it('login', () => {
-    cy.task('reset', { tata: 2 }).then((args) => console.log(args));
+    cy.task('reset');
+
     cy.findByLabelText('Email')
       .should('exist')
       .type('test@test.fr');
