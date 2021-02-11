@@ -5,18 +5,19 @@ import ContentTypeCollapses from '../ContentTypeCollapses';
 import GlobalActions from '../GlobalActions';
 import Wrapper from './Wrapper';
 
-const ContentTypes = ({ layout: { actions, subjects } }) => {
+const ContentTypes = ({ name, layout: { actions, subjects } }) => {
   return (
     <Wrapper>
       <Padded left right bottom size="md">
         <GlobalActions actions={actions} />
-        <ContentTypeCollapses subjects={subjects} actions={actions} />
+        <ContentTypeCollapses name={name} subjects={subjects} actions={actions} />
       </Padded>
     </Wrapper>
   );
 };
 
 ContentTypes.propTypes = {
+  name: PropTypes.string.isRequired,
   layout: PropTypes.shape({
     actions: PropTypes.array,
     subjects: PropTypes.object,

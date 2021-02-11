@@ -11,6 +11,8 @@ const CollapsePropertyMatrix = ({
   isLast,
   isOdd,
   label,
+
+  name,
   propertyName,
   values,
 }) => {
@@ -26,10 +28,12 @@ const CollapsePropertyMatrix = ({
         {values.map(({ key, value, required }) => (
           <ActionRow
             key={key}
-            name={key}
+            rowName={key}
             value={value}
             required={required}
             propertyActions={propertyActions}
+            propertyName={propertyName}
+            pathToData={name}
           />
         ))}
       </Padded>
@@ -42,6 +46,7 @@ CollapsePropertyMatrix.propTypes = {
   isOdd: PropTypes.bool.isRequired,
   isLast: PropTypes.bool.isRequired,
   label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   propertyName: PropTypes.string.isRequired,
   values: PropTypes.array.isRequired,
 };

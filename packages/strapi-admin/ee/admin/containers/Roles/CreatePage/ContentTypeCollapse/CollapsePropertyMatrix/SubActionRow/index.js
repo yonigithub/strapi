@@ -1,7 +1,9 @@
 import React, { memo, useCallback, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Flex, Text } from '@buffetjs/core';
+import { get } from 'lodash';
 import styled from 'styled-components';
+import { usePermissionsDataManager } from '../../../contexts/PermissionsDataManagerContext';
 import CheckboxWithCondition from '../../../CheckboxWithCondition';
 import Chevron from '../../../Chevron';
 import CollapseLabel from '../../../CollapseLabel';
@@ -16,7 +18,16 @@ const SubLevelWrapper = styled.div`
   padding-bottom: 8px;
 `;
 
-const SubActionRow = ({ recursiveLevel, values, propertyActions }) => {
+const SubActionRow = ({
+  recursiveLevel,
+  values,
+  propertyActions,
+
+  propertyName,
+  rowName,
+  pathToData,
+}) => {
+  const { modifiedData, onChangeSimpleCheckbox } = usePermissionsDataManager();
   const [rowToOpen, setRowToOpen] = useState(null);
   const handleClickToggleSubLevel = useCallback(name => {
     setRowToOpen(prev => {
@@ -81,6 +92,31 @@ const SubActionRow = ({ recursiveLevel, values, propertyActions }) => {
                       return <HiddenAction key={action.label} />;
                     }
 
+                    const hasChildForm = Array.isArray(value);
+
+                    if (!hasChildForm) {
+                      const checkboxName = [
+                        ...pathToData.split('..'),
+                        action.actionId,
+                        propertyName,
+                        rowName,
+                        value.value,
+                      ];
+                      const checkBoxValue = get(modifiedData, checkboxName, false);
+
+                      return (
+                        <CheckboxWithCondition
+                          key={action.label}
+                          name={checkboxName.join('..')}
+                          onChange={onChangeSimpleCheckbox}
+                          value={checkBoxValue}
+                        />
+                      );
+                    }
+
+                    console.log('todo recursive');
+
+                    // TODO
                     return <CheckboxWithCondition key={action.label} name="todo" />;
                   })}
                 </Flex>
@@ -108,7 +144,10 @@ SubActionRow.defaultProps = {
 };
 
 SubActionRow.propTypes = {
+  rowName: PropTypes.string.isRequired,
+  pathToData: PropTypes.string.isRequired,
   propertyActions: PropTypes.array.isRequired,
+  propertyName: PropTypes.string.isRequired,
   recursiveLevel: PropTypes.number,
   values: PropTypes.array.isRequired,
 };

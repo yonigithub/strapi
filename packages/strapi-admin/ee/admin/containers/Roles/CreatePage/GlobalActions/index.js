@@ -3,15 +3,14 @@ import PropTypes from 'prop-types';
 import { Flex } from '@buffetjs/core';
 import { useIntl } from 'react-intl';
 import CheckboxWithCondition from '../CheckboxWithCondition';
+import findDisplayedActions from './utils/findDisplayedActions';
 import Wrapper from './Wrapper';
 
 const GlobalActions = ({ actions }) => {
   const { formatMessage } = useIntl();
 
   const displayedActions = useMemo(() => {
-    return actions.filter(({ subjects }) => {
-      return subjects.length;
-    });
+    return findDisplayedActions(actions);
   }, [actions]);
 
   return (

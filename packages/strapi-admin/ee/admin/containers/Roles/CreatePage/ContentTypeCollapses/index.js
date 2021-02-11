@@ -2,7 +2,7 @@ import React, { memo, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import ContentTypeCollapse from '../ContentTypeCollapse';
 
-const ContentTypeCollapses = ({ actions, subjects }) => {
+const ContentTypeCollapses = ({ actions, name, subjects }) => {
   const [collapseToOpen, setCollapseToOpen] = useState(null);
 
   const handleClickToggleCollapse = useCallback(
@@ -19,6 +19,7 @@ const ContentTypeCollapses = ({ actions, subjects }) => {
       <ContentTypeCollapse
         allActions={actions}
         key={subject}
+        name={`${name}..${subject}`}
         contentTypeName={subject}
         isActive={collapseToOpen === subject}
         index={index}
@@ -36,6 +37,7 @@ ContentTypeCollapses.defaultProps = {
 
 ContentTypeCollapses.propTypes = {
   actions: PropTypes.array.isRequired,
+  name: PropTypes.string.isRequired,
   subjects: PropTypes.object,
 };
 

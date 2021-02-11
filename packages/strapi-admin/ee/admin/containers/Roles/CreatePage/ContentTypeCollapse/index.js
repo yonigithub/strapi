@@ -8,6 +8,7 @@ import Wrapper from './Wrapper';
 const ContentTypeCollapse = ({
   allActions,
   contentTypeName,
+  name,
   index,
   isActive,
   onClickToggleCollapse,
@@ -38,6 +39,7 @@ const ContentTypeCollapse = ({
             <CollapsePropertyMatrix
               availableActions={availableActions}
               label={label}
+              name={name}
               propertyName={key}
               key={key}
               isLast={i === properties.length - 1}
@@ -55,6 +57,7 @@ ContentTypeCollapse.propTypes = {
   contentTypeName: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   isActive: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired,
   onClickToggleCollapse: PropTypes.func.isRequired,
   properties: PropTypes.array.isRequired,
 };

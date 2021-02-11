@@ -291,24 +291,24 @@ const data = {
               key: 'fields',
               values: [
                 {
-                  key: 'POSTAL_CODER',
+                  key: 'postal_coder',
                   value: 'postal_coder',
                   required: true,
                 },
                 {
-                  key: 'CATEGORIES',
+                  key: 'categories',
                   value: 'categories',
                 },
                 {
-                  key: 'COVER',
+                  key: 'cover',
                   value: 'cover',
                 },
                 {
-                  key: 'IMAGES',
+                  key: 'images',
                   value: 'images',
                 },
                 {
-                  key: 'CITY',
+                  key: 'city',
                   value: 'city',
                 },
               ],
@@ -343,16 +343,16 @@ const data = {
                       value: 'media',
                       required: true,
                     },
-                    {
-                      key: 'closing',
+                    // {
+                    //   key: 'closing',
 
-                      value: [
-                        {
-                          key: 'name',
-                          value: [{ key: 'test', value: 'test' }],
-                        },
-                      ],
-                    },
+                    //   value: [
+                    //     {
+                    //       key: 'name',
+                    //       value: [{ key: 'test', value: 'test' }],
+                    //     },
+                    //   ],
+                    // },
                   ],
                 },
                 {
@@ -376,15 +376,15 @@ const data = {
                 {
                   key: 'English',
                   required: true,
-                  value: [{ key: 'EN', value: 'en' }],
+                  value: 'en',
                 },
               ],
             },
           ],
         },
-        test: {
-          properties: [],
-        },
+        // test: {
+        //   properties: [],
+        // },
       },
       actions: [
         {
@@ -396,13 +396,13 @@ const data = {
         {
           label: 'Read',
           actionId: 'content-manager.explorer.read',
-          subjects: ['restaurant', 'address'],
+          subjects: ['restaurant', 'addresse'],
           applyToProperties: ['fields', 'locales'],
         },
         {
           label: 'Update',
           actionId: 'content-manager.explorer.update',
-          subjects: ['address', 'restaurant'],
+          subjects: ['addresse', 'restaurant'],
           applyToProperties: ['fields'],
         },
         {

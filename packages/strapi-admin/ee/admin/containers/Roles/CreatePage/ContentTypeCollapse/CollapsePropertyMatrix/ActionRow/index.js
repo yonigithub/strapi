@@ -1,18 +1,21 @@
 import React, { memo, useState, useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Padded, Flex } from '@buffetjs/core';
+import { get } from 'lodash';
 import CheckboxWithCondition from '../../../CheckboxWithCondition';
+import { usePermissionsDataManager } from '../../../contexts/PermissionsDataManagerContext';
 import Chevron from '../../../Chevron';
 import HiddenAction from '../../../HiddenAction';
 import RequiredSign from '../../../RequiredSign';
 import RowLabel from '../../../RowLabel';
-import RecursiveMatrix from '../SubActionRow';
+import SubActionRow from '../SubActionRow';
 import Wrapper from './Wrapper';
 
-const ActionRow = ({ name, value, required, propertyActions }) => {
+const ActionRow = ({ rowName, value, required, propertyActions, pathToData, propertyName }) => {
+  const { modifiedData, onChangeSimpleCheckbox } = usePermissionsDataManager();
   const [rowToOpen, setRowToOpen] = useState(null);
 
-  const isActive = rowToOpen === name;
+  const isActive = rowToOpen === rowName;
 
   const recursiveValues = useMemo(() => {
     if (!Array.isArray(value)) {
@@ -27,14 +30,16 @@ const ActionRow = ({ name, value, required, propertyActions }) => {
   const handleClick = useCallback(() => {
     if (isCollapsable) {
       setRowToOpen(prev => {
-        if (prev === name) {
+        if (prev === rowName) {
           return null;
         }
 
-        return name;
+        return rowName;
       });
     }
-  }, [isCollapsable, name]);
+  }, [isCollapsable, rowName]);
+
+  // const subRowName = [...pathToData.split('..'), actionId, propertyName, ]
 
   return (
     <>
@@ -45,7 +50,7 @@ const ActionRow = ({ name, value, required, propertyActions }) => {
             width="15rem"
             onClick={handleClick}
             isCollapsable={isCollapsable}
-            label={name}
+            label={rowName}
             // TODO
             textColor="grey"
           >
@@ -53,18 +58,55 @@ const ActionRow = ({ name, value, required, propertyActions }) => {
             <Chevron icon={isActive ? 'caret-up' : 'caret-down'} />
           </RowLabel>
           <Flex style={{ flex: 1 }}>
-            {propertyActions.map(action => {
-              if (!action.isActionRelatedToCurrentProperty) {
-                return <HiddenAction key={action.label} />;
+            {propertyActions.map(({ actionId, label, isActionRelatedToCurrentProperty }) => {
+              if (!isActionRelatedToCurrentProperty) {
+                return <HiddenAction key={label} />;
               }
 
-              return <CheckboxWithCondition key={action.label} name="todo" />;
+              const hasChildForm = Array.isArray(value);
+
+              if (!hasChildForm) {
+                const checkboxName = [...pathToData.split('..'), actionId, propertyName, value];
+
+                const checkBoxValue = get(modifiedData, checkboxName, false);
+
+                return (
+                  <CheckboxWithCondition
+                    key={label}
+                    name={checkboxName.join('..')}
+                    onChange={onChangeSimpleCheckbox}
+                    value={checkBoxValue}
+                  />
+                );
+              }
+              // TODO needs improvements
+
+              // console.log({ propertyName, value });
+
+              const checkboxName = [...pathToData.split('..'), actionId, propertyName, rowName];
+              const values = get(modifiedData, checkboxName, null);
+              console.log({ values });
+
+              return (
+                <CheckboxWithCondition
+                  key={label}
+                  name="{checkboxName.join('..')}"
+                  // onChange={handleChangeSimpleCheckbox}
+                  // value={checkBoxValue}
+                />
+              );
             })}
           </Flex>
         </Flex>
       </Wrapper>
       {isActive && (
-        <RecursiveMatrix name={name} propertyActions={propertyActions} values={recursiveValues} />
+        <SubActionRow
+          propertyActions={propertyActions}
+          values={recursiveValues}
+          pathToData={pathToData}
+          propertyName={propertyName}
+          rowName={rowName}
+        />
       )}
     </>
   );
@@ -75,8 +117,10 @@ ActionRow.defaultProps = {
 };
 
 ActionRow.propTypes = {
-  name: PropTypes.string.isRequired,
+  rowName: PropTypes.string.isRequired,
+  pathToData: PropTypes.string.isRequired,
   propertyActions: PropTypes.array.isRequired,
+  propertyName: PropTypes.string.isRequired,
   required: PropTypes.bool,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
 };
