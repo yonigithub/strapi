@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useMemo, useRef } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { get } from 'lodash';
 import { request, useGlobalContext } from 'strapi-helper-plugin';
 import { useSelector, useDispatch } from 'react-redux';
@@ -28,6 +28,8 @@ import { getRequestUrl } from './utils';
 const CollectionTypeFormWrapper = ({ allLayoutData, children, from, slug, id, origin }) => {
   const { emitEvent } = useGlobalContext();
   const { push, replace } = useHistory();
+  const { search } = useLocation();
+
   const dispatch = useDispatch();
   const {
     componentsDataStructure,
@@ -225,14 +227,14 @@ const CollectionTypeFormWrapper = ({ allLayoutData, children, from, slug, id, or
         // Enable navigation and remove loaders
         dispatch(setStatus('resolved'));
 
-        replace(`/plugins/${pluginId}/collectionType/${slug}/${response.id}`);
+        replace(`/plugins/${pluginId}/collectionType/${slug}/${response.id}${search}`);
       } catch (err) {
         emitEventRef.current('didNotCreateEntry', { error: err, trackerProperty });
         displayErrors(err);
         dispatch(setStatus('resolved'));
       }
     },
-    [cleanReceivedData, displayErrors, replace, slug, dispatch]
+    [cleanReceivedData, displayErrors, replace, slug, dispatch, search]
   );
 
   const onPublish = useCallback(async () => {
