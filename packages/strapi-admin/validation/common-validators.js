@@ -143,6 +143,8 @@ const updatePermissions = yup
                 const action = getActionFromProvider(this.options.parent.action);
                 const hasNoProperties = isEmpty(properties) || isNil(properties);
 
+                return true;
+
                 if (!has('options.applyToProperties', action)) {
                   return hasNoProperties;
                 }
