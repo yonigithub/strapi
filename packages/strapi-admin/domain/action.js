@@ -1,6 +1,7 @@
 'use strict';
 
 const _ = require('lodash');
+const { curry, isArray } = require('lodash/fp');
 
 const actionFields = [
   'section',
@@ -15,7 +16,7 @@ const actionFields = [
 
 const defaultAction = {
   options: {
-    fieldsRestriction: true,
+    applyToProperties: null,
   },
 };
 
@@ -50,10 +51,20 @@ const createAction = attributes => {
   return _.merge({}, defaultAction, action);
 };
 
-const hasFieldsRestriction = _.matchesProperty('options.fieldsRestriction', true);
+const appliesToProperty = curry((property, action) => {
+  const {
+    options: { applyToProperties },
+  } = action;
+
+  if (!isArray(applyToProperties)) {
+    return false;
+  }
+
+  return applyToProperties.includes(property);
+});
 
 module.exports = {
   getActionId,
   createAction,
-  hasFieldsRestriction,
+  appliesToProperty,
 };
